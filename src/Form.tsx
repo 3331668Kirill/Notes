@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-import {Note} from "./Note";
-
+import React, {useState} from 'react'
+import {Note} from "./Note"
 
 const Form = () => {
     const [value, setValue] = useState<string>('')
@@ -9,21 +8,21 @@ const Form = () => {
     const [note, setNote] = useState<Array<string>>([])
     const [active, setActive] = useState<string>('')
 
-    const setNoteActive = (item: any) => {
+    const setNoteActive = (item: string) => {
         setValue(item)
         setActive(item)
     }
 
-    const filterTag = (e: any) => {
-        e.preventDefault();
+    const filterTag = (e:React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        e.preventDefault()
         let array = note.map(t => t)
         setData(array)
     }
 
-    const valueChange = (e: any) => {
+    const valueChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         let value = e.currentTarget.value
         setValue(value)
-        let val = value.split(/(#[a-z\d-]+)/ig);
+        let val = value.split(/(#[a-z\d-]+)/ig)
         for (let i = 0; i < val.length; i++) {
             if (val[i].charAt(0) === "#") {
                 setTag(val[i])
@@ -31,7 +30,7 @@ const Form = () => {
         }
     }
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         setData(data.concat(value))
             if (tag.length > 0) {
@@ -46,21 +45,21 @@ const Form = () => {
         const a = document.createElement("a");
         a.href = URL.createObjectURL(new Blob([JSON.stringify(json, null, 2)], {
             type: 'application/json'
-        }));
-        a.setAttribute("download", "data.json");
-        document.body.appendChild(a);
+        }))
+        a.setAttribute("download", "data.json")
+        document.body.appendChild(a)
         a.click()
-        document.body.removeChild(a);
+        document.body.removeChild(a)
     }
 
-    const delPost = (index: any) => {
+    const delPost = (index: number) => {
         let arr = data.map(t => t);
         arr.splice(index, 1)
         setData(arr)
         setValue('')
     }
 
-    const delHashtag = (index: any) => {
+    const delHashtag = (index: number) => {
         let tag = note.map(t => t);
         let val = value;
         let del = tag.splice(index, 1)
@@ -70,7 +69,7 @@ const Form = () => {
         setValue(clearTag)
 
     }
-    const edit = (index: any) => {
+    const edit = (index: number) => {
         let val = value;
         let arr = data.map(t => t);
         arr.splice(index, 1, val)
@@ -98,4 +97,4 @@ const Form = () => {
     );
 
 }
-export default Form;
+export default Form

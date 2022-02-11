@@ -3,13 +3,13 @@ import React from "react"
 type TypePropsNote = {
     data: Array<string>
     note: Array<string>
-    filterTag: (e: any) => void
-    edit: (index: any) => void
-    valueChange: (e: any) => void
-    delHashtag: (index: any) => void
-    delPost: (index: any) => void
-    handleSubmit: (e: any) => void
-    setNoteActive: (item: any) => void
+    filterTag: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    edit: (index: number) => void
+    valueChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+    delHashtag: (index: number) => void
+    delPost: (index: number) => void
+    handleSubmit: (e:  React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+    setNoteActive: (item: string) => void
     value: string
     active: string
     saveToFile: () => void
@@ -37,7 +37,7 @@ export const Note = ({   value, active, saveToFile,
                     </div>
                 ) : null}
             </div>
-            <ul className='listBox'>
+            <ul className='listNote'>
                 {data.length > 0 ? data.map((item, index) =>
                     <div key={index} onClick={() => setNoteActive(item)}
                          className={active === item ? 'note_active' : 'notes'}>
