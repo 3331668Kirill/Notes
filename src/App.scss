@@ -1,0 +1,185 @@
+$milk-white: #bdc3c7;
+$background: #121323;
+$grey: #ccc;
+$twenty: 20px;
+$shadow: 0 0 10px rgba(0,0,0,0.5);
+$marginLi: 40px 10px 0px 10px;
+
+%input-props {
+  padding: 10px;
+  margin: $twenty;
+  border-radius: 4px;
+}
+%form-props  {
+  margin: $twenty;
+
+}
+%button-props{
+  background-color: initial;
+  background-image: linear-gradient(rgba(132, 201, 180, 0.84), rgba(4, 74, 154, 0.84) 50%);
+  border-radius: 42px;
+  border-width: 0;
+  box-shadow: rgb(57 31 91 ) 0 2px 2px, rgb(179 132 201 ) 0 8px 12px;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Quicksand, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin: 5px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+%li-props{
+  border: 1px solid silver;
+  border-radius: 5px;
+  background-color: #8c58f8;
+}
+%list-props{
+  color:black;
+  font-size:14px;
+  font-family:Georgia, Times, serif;
+  margin-right: 35px;
+  flex-wrap: wrap;
+}
+
+
+body {
+  background-color: $background;
+  font-family: sans-serif,serif;
+}
+.container {
+  justify-content: center;
+  margin: 0 auto;
+  background-color: white;
+  max-width: 1000px;
+  min-height: 900px;
+}
+.App {
+  padding: 30px; 
+  text-align: center;
+}
+.Note{
+  .someText{
+    @extend %form-props;
+    display: flex;
+    
+    align-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
+  }
+    textarea{
+      @extend %input-props;
+      flex-basis: 80%;
+      overflow: scroll;
+    }
+    .save{
+      margin-top: $twenty;
+      height: 50px;
+      flex-basis: 10%;
+      @extend %button-props;
+    }
+
+    input{
+      @extend %input-props;
+    }
+    .tagButton{
+      @extend %button-props;
+      flex-direction: column;
+      justify-content: center;
+      max-height: 30px;
+      margin: 1rem $twenty 0px 0px;
+      color: black;
+    }
+  .listBox{
+    @extend %list-props;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-position: unset;
+    list-style-type: none;
+    .notes{
+      @extend %li-props;
+      margin: $twenty;
+      padding: $twenty;
+
+      .someNote{
+        flex-grow: 1;
+      }
+
+      .delNote{
+        @extend %button-props;
+        height: 30px;
+        background-image: linear-gradient(rgba(132, 201, 180, 0.84), rgba(112, 4, 154, 0.84) 50%);
+
+      }
+      .changeNote{
+        height: 30px;
+        @extend %button-props;
+      }
+
+    }}
+  .hashTag{
+    display: flex;
+    color: white;
+    flex-direction: row;
+    align-content: center;
+    justify-content: flex-start;
+    margin: 20px;
+    .tags{
+      margin-left: 20px;
+      .delTag{
+        @extend %button-props;
+        margin-left: 20px;
+        border-radius: 10px;
+        background-color: #1E90FF;
+      }
+    }
+
+  }
+  .note_active{
+    @extend %li-props;
+    margin: $twenty;
+    padding: 20px;
+    background-color: #e37717;
+    .delNote{
+      @extend %button-props;
+      height: 30px;
+      background-image: linear-gradient(rgba(132, 201, 180, 0.84), rgba(112, 4, 154, 0.84) 50%);
+
+    }
+    .changeNote{
+      height: 30px;
+      @extend %button-props;
+    }
+  }
+  .containerNote{
+    @extend %list-props;
+    display: inline-flex;
+    flex-direction: row;
+    list-style-type: none;
+    flex-wrap: wrap;
+    .tags{
+      @extend %li-props;
+      padding: 10px;
+      margin: 3px;
+    }
+
+  }
+}
+
+@media only screen and (max-width: 700px) {
+
+  .someText{
+    display: flex;
+    align-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+
+  }
+}
